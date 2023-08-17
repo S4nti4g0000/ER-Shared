@@ -1,0 +1,9 @@
+{
+    "lives": 3,
+    "attempts": 6,
+    "lvlNum": 1,
+    "itemsInv": 0,
+    "nombre_jugador": ".",
+    "alive": false,
+    "hasKey": false
+}
