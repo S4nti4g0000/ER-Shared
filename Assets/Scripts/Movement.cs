@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour
     public GameObject classicCam_main;
     public GameObject classicCam_cinemachine;
 
+    private Vector3 previousDirection = Vector3.forward;
+
     void Start()
     {
         filePat = Application.streamingAssetsPath + "/" + "data1.json";

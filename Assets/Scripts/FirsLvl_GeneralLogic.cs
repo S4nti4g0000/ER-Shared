@@ -19,6 +19,8 @@ public class FirsLvl_GeneralLogic : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         filePat = Application.streamingAssetsPath + "/" + "data1.json";
 

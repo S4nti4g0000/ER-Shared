@@ -23,6 +23,9 @@ public class gameAdmin : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         filePat = Application.streamingAssetsPath + "/" + "data1.json";
         
 
