@@ -1,0 +1,12 @@
+{
+    "nombre_jugador": "Nadie666",
+    "optionsText_movement": "Modern",
+    "classic": false,
+    "hasKey": false,
+    "alive": false,
+    "lives": 3,
+    "attempts": 0,
+    "lvlNum": 0,
+    "itemsInv": 0,
+    "moveValue": 1
+}

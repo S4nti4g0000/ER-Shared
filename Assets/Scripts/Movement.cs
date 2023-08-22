@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using System.IO;
+using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
+    #region JSON declaration
+    public DataJSON misDatos;
+    string filePat;
+    #endregion
+
     public GameObject playerObj_;
 
     int status;
@@ -13,19 +22,39 @@ public class Movement : MonoBehaviour
     int direction;
     public float rot_direction;
     Vector3 pos_;
-    bool classic;
+    GameObject character;
+    bool classic_;
+
+    public GameObject modernCam_cinemachine;
+    public GameObject modernCam_main;
+    public GameObject classicCam_main;
+    public GameObject classicCam_cinemachine;
 
     void Start()
     {
+        filePat = Application.streamingAssetsPath + "/" + "data1.json";
+
         status = 0;
         speedM = 5.0f;
-        classic = true;
+        character = this.gameObject;
+
+        modernCam_main.SetActive(false);
+        modernCam_cinemachine.SetActive(false);
+
+        if (File.Exists(filePat))
+        {
+            string s = File.ReadAllText(filePat);
+            misDatos = JsonUtility.FromJson<DataJSON>(s);
+            classic_ = misDatos.classic;
+        }
+        
+
     }
 
     void Update()
     {
         InputHandler();
-        StateMachine();
+        StateMachine();        
     }
 
     void InputHandler()
@@ -55,7 +84,7 @@ public class Movement : MonoBehaviour
 
     private void StateMachine()
     {
-        if(classic == true)
+        if(classic_ == true)
         {
             switch (status)
             {
@@ -90,6 +119,46 @@ public class Movement : MonoBehaviour
 
                     break;
             }
+        }
+        else
+        {
+            classicCam_main.SetActive(false);
+            classicCam_cinemachine.SetActive(false);
+            modernCam_main.SetActive(true);
+            modernCam_cinemachine.SetActive(true);
+
+            if (Input.GetKey(KeyCode.D))
+                character.transform.Rotate(0, 0.5f, 0);
+            else if (Input.GetKey(KeyCode.A))
+                character.transform.Rotate(0, -0.5f, 0);
+
+            // Check for W and S keys
+            if (Input.GetKey(KeyCode.S))
+                direction = -1;
+            else if (Input.GetKey(KeyCode.W))
+                direction = 1;
+            else
+            {
+                //--- Slow down ---//
+
+                if (speedM > 0.0f)
+                    speedM -= 4.0f * Time.deltaTime;
+                else
+                    speedM = 0.0f;
+
+                // Reset direction when not moving
+                direction = 0;
+            }
+
+            if (direction != 0)
+            {
+                speedM += 4.5f * Time.deltaTime;
+                speedM = Mathf.Clamp(speedM, 0.0f, 5.0f);
+
+                character.transform.Translate(Vector3.forward * speedM * direction * Time.deltaTime);
+            }
+
+
         }
         
     }
