@@ -17,10 +17,14 @@ public class FirsLvl_GeneralLogic : MonoBehaviour
     public TMP_Text livesTxt;
     int livesNum;
 
+    public GameObject invPanel;
+
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        invPanel.SetActive(false);
 
         filePat = Application.streamingAssetsPath + "/" + "data1.json";
 
@@ -32,5 +36,18 @@ public class FirsLvl_GeneralLogic : MonoBehaviour
             livesTxt.SetText("Lives: " + livesNum.ToString());
         }
 
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+            invPanel.SetActive(true);
+
+        if(invPanel.activeSelf == true)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }else {Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; }
     }
 }

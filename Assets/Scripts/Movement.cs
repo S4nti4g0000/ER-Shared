@@ -163,11 +163,7 @@ public class Movement : MonoBehaviour
                 character.transform.Translate(Vector3.forward * speedM * direction * Time.deltaTime);
             }
 
-
-        }
-
-        
-        
+        }       
     }
 
     private void OnCollisionEnter(Collision collider)
