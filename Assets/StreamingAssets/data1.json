@@ -8,5 +8,11 @@
     "attempts": 0,
     "lvlNum": 0,
     "itemsInv": 0,
-    "moveValue": 0
+  "moveValue": 0,
+  "ItemArray": [
+    {
+      "id": 0,
+      "item_name": "Test cube"
+    }
+  ]
 }

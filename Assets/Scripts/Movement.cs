@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Movement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Movement : MonoBehaviour
     public float rot_direction;
     Vector3 pos_;
     GameObject character;
+    Vector3 prevPosition;
     bool classic_;
 
     public GameObject modernCam_cinemachine;
@@ -56,7 +58,8 @@ public class Movement : MonoBehaviour
     void Update()
     {
         InputHandler();
-        StateMachine();        
+        StateMachine();
+        prevPosition = character.transform.position;
     }
 
     void InputHandler()
@@ -144,7 +147,7 @@ public class Movement : MonoBehaviour
                 //--- Slow down ---//
 
                 if (speedM > 0.0f)
-                    speedM -= 4.0f * Time.deltaTime;
+                    speedM -= 5.0f * Time.deltaTime;
                 else
                     speedM = 0.0f;
 
@@ -162,6 +165,18 @@ public class Movement : MonoBehaviour
 
 
         }
+
         
+        
+    }
+
+    private void OnCollisionEnter(Collision collider)
+    {
+        if(collider.gameObject.CompareTag("world") || collider.gameObject.CompareTag("world"))
+        {
+            // Reset character position
+            character.transform.position = prevPosition;
+
+        }
     }
 }

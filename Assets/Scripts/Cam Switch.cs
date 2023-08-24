@@ -24,7 +24,6 @@ public class CamSwitch : MonoBehaviour
 
 
         camera = GameObject.Find(cam_name);
-        player = GameObject.Find("Capsule");
 
         if (File.Exists(filePat))
         {
@@ -55,7 +54,7 @@ public class CamSwitch : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject == player)
+        if (other.gameObject.CompareTag("Player"))
         {
             this.gameObject.SetActive(false);
             camera.SetActive(true);
