@@ -14,16 +14,4 @@ public class MainInventoryScript : MonoBehaviour
     private int maxItems = 10;
 
     
-
-    void Start()
-    {
-        
-        
-
-    }
-
-    void Update()
-    {
-        
-    }
 }
