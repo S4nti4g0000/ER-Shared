@@ -8,6 +8,9 @@ TagManager:
   - PlayerName
   - world
   - Item
+  - Puzzle
+  - Fire
+  - Door
   layers:
   - Default
   - TransparentFX

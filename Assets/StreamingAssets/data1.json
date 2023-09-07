@@ -3,6 +3,7 @@
     "optionsText_movement": "Modern",
     "classic": false,
     "hasKey": false,
+    "hasKey2": false,
     "alive": false,
     "lives": 3,
     "attempts": 0,

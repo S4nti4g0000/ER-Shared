@@ -15,6 +15,8 @@ public class juego : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         for (int i = 0;i < 36; i++)
         {
             GameObject.Find("Pieza (" + i + ")").transform.Find("Puzzle").GetComponent<SpriteRenderer>().sprite = Niveles[PlayerPrefs.GetInt("Nivel")];
@@ -66,7 +68,7 @@ public class juego : MonoBehaviour
         {
             PlayerPrefs.SetInt("Nivel", 0);
         }
-        SceneManager.LoadScene("Juego");
+        SceneManager.LoadScene("FirstLevel");
     }
 
     public void MenuPrincipal()

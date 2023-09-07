@@ -18,6 +18,7 @@ public class FirsLvl_GeneralLogic : MonoBehaviour
     int livesNum;
 
     public GameObject invPanel;
+    public PlayerInv pInv_;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class FirsLvl_GeneralLogic : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         invPanel.SetActive(false);
+        pInv_.mainInventory.Load();
 
         filePat = Application.streamingAssetsPath + "/" + "data1.json";
 
