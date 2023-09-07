@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInv : MonoBehaviour
 {
     public InventoryObject mainInventory;
-    public AudioSource soundEffect;
+    //public AudioSource soundEffect;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -13,10 +13,8 @@ public class PlayerInv : MonoBehaviour
         if (item != null)
         {
             mainInventory.addItem(item.keyItem, 1);
-            Destroy(other.gameObject);  
+            Destroy(other.gameObject);
         }
-
-        soundEffect.Play();
 
     }
 
